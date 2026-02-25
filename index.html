@@ -27,10 +27,21 @@
   </div>
 
   <p class="hero-trust">Réponse sous 24h • Production locale • Workflow structuré</p>
-</section>
+  </section>
+
+  <!-- VISION -->
+  <section class="vision section-alt">
+    <h2 class="section-title">Vision</h2>
+    <p>
+      Je conçois des univers visuels où l’intelligence artificielle,
+      la modélisation 3D et la fabrication physique se rencontrent.
+      Chaque projet est pensé comme un système cohérent,
+      du concept numérique à l’objet réel.
+    </p>
+  </section>
 
   <!-- COMPÉTENCES -->
-  <section class="skills section-alt">
+  <section class="skills">
     <div class="skill-card">
       <h2>3D</h2>
       <p>Modélisation stylisée<br>Sculpt<br>Optimisation print</p>
@@ -46,7 +57,7 @@
   </section>
 
   <!-- SERVICES -->
-  <section class="services">
+  <section class="services section-alt">
     <h2 class="section-title">Services</h2>
     <div class="services-grid">
     <div class="service-card">
@@ -76,7 +87,7 @@
 </section>
 
   <!-- PROJETS -->
-  <section class="projects section-alt" id="projets">
+  <section class="projects" id="projets">
     <h2 class="section-title">Vitrine</h2>
 
     <div class="project-grid">
@@ -112,7 +123,7 @@
   </section>
 
   <!-- METHODE -->
-  <section class="method">
+  <section class="method section-alt">
     <h2 class="section-title">Méthode</h2>
 
     <div class="method-steps">
@@ -125,7 +136,7 @@
   </section>
 
   <!-- PREUVE -->
-  <section class="credibility section-alt">
+  <section class="credibility">
     <h2 class="section-title">Pourquoi me choisir ?</h2>
 
     <div class="credibility-grid">
@@ -137,22 +148,58 @@
   </section>
 
   <!-- CONTACT -->
-  <section class="contact" id="contact">
-  <h2>Un projet en tête ?</h2>
+  <section class="contact section-alt" id="contact">
+    <h2>Un projet en tête ?</h2>
 
-  <p>
-    Discutons de votre idée et voyons comment la transformer
-    en projet concret, optimisé et prêt à produire.
+    <p>
+    Donnez-moi quelques informations clés sur votre projet.
+  Je vous réponds sous 24h avec une proposition adaptée.
   </p>
 
-  <a href="mailto:trafalgar-d-lad@gmail.com" class="btn-primary">
-    Discutons de votre projet
-  </a>
+  <form action="https://formspree.io/f/xpqjkovd" method="POST" class="contact-form">
+
+    <input type="text" name="name" placeholder="Votre nom / société" required>
+
+  <input type="email" name="email" placeholder="Votre email" required>
+
+  <select name="type" required>
+    <option value="">Type de projet</option>
+    <option>Personnage 3D stylisé</option>
+    <option>Direction artistique IA</option>
+    <option>Prototypage / Impression 3D</option>
+    <option>Motion design / Logo 3D</option>
+    <option>Autre</option>
+  </select>
+
+  <select name="budget">
+    <option value="">Budget estimé</option>
+    <option>Moins de 300€</option>
+    <option>300€ – 800€</option>
+    <option>800€ – 2000€</option>
+    <option>2000€ et plus</option>
+  </select>
+
+  <input type="text" name="deadline" placeholder="Deadline souhaitée (optionnel)">
+
+  <textarea name="message" rows="6" placeholder="Décrivez votre projet..." required></textarea>
+
+  <!-- Honeypot anti-spam -->
+  <input type="text" name="_gotcha" style="display:none">
+
+  <p style="font-size:0.9rem; opacity:0.7;">
+    Toutes les demandes sont étudiées sérieusement.
+  </p>
+
+  <button type="submit" class="btn-primary">
+    Envoyer la demande
+  </button>
+
+  </form>
 
   <p class="contact-trust">
-    Réponse sous 24h • Échange sans engagement
+    Échange sans engagement
   </p>
-</section>
+  </section>
 
    <!-- GALLERY MODAL: Projet 01 -->
   <div id="proj01-gallery" class="gallery-modal" aria-hidden="true">
@@ -246,6 +293,17 @@
   <script src="js/gallery-proj02.js" defer></script>
   <script src="js/gallery-proj03.js" defer></script>
   <script src="js/gallery-proj04.js" defer></script>
+  <script src="js/backtotop.js" defer></script>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p>
+        © 2026 Trafalgar D. Lad — Tous droits réservés.
+      </p> 
+    </div>
+  </footer>
+
+  <button id="backToTop" aria-label="Retour en haut">↑</button>
 
 </body>
 </html>
