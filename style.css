@@ -551,6 +551,8 @@ h1, h2, h3 {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s ease;
+  padding: 20px;
+  cursor: pointer;
 }
 .gallery-modal.open {
   opacity: 1;
@@ -558,28 +560,35 @@ h1, h2, h3 {
 }
 .gallery-content {
   position: relative; /* IMPORTANT */
+  background: #071018;
+  padding: 30px;
+  width: min(1100px, 95%);
+  border-radius: 12px;
+  border: 1px solid rgba(0,229,255,0.1);
+  max-height: 90vh;
+  overflow-y: auto;
+  cursor: default;
 }
 .gallery-content h3 {
   margin-top: 10px;
 }
 .gallery-close {
-  position: absolute;
+  position: fixed; /* ← clé mobile */
   top: 15px;
-  right: 20px;
-  width: 40px;
-  height: 40px;
+  right: 15px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  background: rgba(0,0,0,0.4);
-  backdrop-filter: blur(4px);
-  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: white;
-  font-size: 20px;
+  font-size: 22px;
   cursor: pointer;
-  z-index: 20; /* au-dessus du viewer */
+  z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: 0.3s ease;
 }
 .gallery-close:hover {
   background: var(--cyan);
