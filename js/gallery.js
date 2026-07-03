@@ -20,6 +20,13 @@
       viewerVideo.style.display = "none";
     }
 
+    // Hide viewer iframe
+    const viewerIframe = qs(modal, ".viewer-iframe");
+    if (viewerIframe) {
+      viewerIframe.removeAttribute("src");
+      viewerIframe.style.display = "none";
+    }
+
     // Hide viewer img
     const viewerImg = qs(modal, ".viewer-img");
     if (viewerImg) {
@@ -40,6 +47,7 @@
   function showMedia(modal, type, src) {
     const viewerImg = qs(modal, ".viewer-img");
     const viewerVideo = qs(modal, ".viewer-video");
+    const viewerIframe = qs(modal, ".viewer-iframe");
 
     if (type === "img") {
       if (viewerVideo) {
@@ -48,6 +56,10 @@
         viewerVideo.load();
         viewerVideo.style.display = "none";
       }
+      if (viewerIframe) {
+        viewerIframe.removeAttribute("src");
+        viewerIframe.style.display = "none";
+      }
       if (viewerImg) {
         viewerImg.src = src;
         viewerImg.style.display = "block";
@@ -55,17 +67,39 @@
       return;
     }
 
-    // video
-    if (viewerImg) {
-      viewerImg.removeAttribute("src");
-      viewerImg.style.display = "none";
+    if (type === "video") {
+      if (viewerIframe) {
+        viewerIframe.removeAttribute("src");
+        viewerIframe.style.display = "none";
+      }
+      if (viewerImg) {
+        viewerImg.removeAttribute("src");
+        viewerImg.style.display = "none";
+      }
+      if (viewerVideo) {
+        viewerVideo.style.display = "block";
+        viewerVideo.src = src;
+        viewerVideo.load();
+        viewerVideo.play().catch(() => {});
+      }
+      return;
     }
-    if (viewerVideo) {
-      viewerVideo.style.display = "block";
-      // Lazy-load: assign src only now
-      viewerVideo.src = src;
-      viewerVideo.load();
-      viewerVideo.play().catch(() => {});
+
+    if (type === "youtube") {
+      if (viewerVideo) {
+        viewerVideo.pause();
+        viewerVideo.removeAttribute("src");
+        viewerVideo.load();
+        viewerVideo.style.display = "none";
+      }
+      if (viewerImg) {
+        viewerImg.removeAttribute("src");
+        viewerImg.style.display = "none";
+      }
+      if (viewerIframe) {
+        viewerIframe.style.display = "block";
+        viewerIframe.src = src;
+      }
     }
   }
 
@@ -95,6 +129,16 @@
     if (opened) closeModal(opened);
   });
 
+  // Close open modal when navigating to an internal anchor link
+  document.addEventListener("click", (e) => {
+    const anchor = e.target.closest('a[href^="#"]');
+    if (!anchor) return;
+    const opened = document.querySelector(".gallery-modal.open");
+    if (!opened) return;
+    if (anchor.closest(".gallery-modal")) return;
+    closeModal(opened);
+  });
+
   // Event delegation: thumbs click (works for all modals)
   document.addEventListener("click", (e) => {
     const thumb = e.target.closest(".gallery-thumb");
@@ -103,43 +147,11 @@
     const modal = thumb.closest(".gallery-modal");
     if (!modal) return;
 
-    const type = thumb.dataset.type;     // "img" | "video"
-    const src = thumb.dataset.src;       // file path
+    const type = thumb.dataset.type;     // "img" | "video" | "youtube"
+    const src = thumb.dataset.src;       // file path or embed URL
     if (!type || !src) return;
 
     showMedia(modal, type, src);
-  });
-
-  // Tabs (Jour / Nuit) for proj03 (or any modal that uses data-section)
-  document.addEventListener("click", (e) => {
-    const tab = e.target.closest(".tab-btn");
-    if (!tab) return;
-
-    const modal = tab.closest(".gallery-modal");
-    if (!modal) return;
-
-    const section = tab.dataset.section;
-    if (!section) return;
-
-    // Toggle active buttons
-    qsa(modal, ".tab-btn").forEach(b => b.classList.toggle("active", b === tab));
-
-    // Show/hide grids
-    qsa(modal, ".gallery-grid[data-section]").forEach(grid => {
-      grid.style.display = (grid.dataset.section === section) ? "" : "none";
-    });
-
-    // Reset viewer
-    const viewerImg = qs(modal, ".viewer-img");
-    const viewerVideo = qs(modal, ".viewer-video");
-    viewerImg?.removeAttribute("src");
-    if (viewerImg) viewerImg.style.display = "none";
-    if (viewerVideo) {
-      viewerVideo.pause();
-      viewerVideo.removeAttribute("src");
-      viewerVideo.load();
-      viewerVideo.style.display = "none";
-    }
   });
 
 })();

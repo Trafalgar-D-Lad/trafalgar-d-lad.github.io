@@ -258,20 +258,27 @@ h1, h2, h3 {
   box-shadow: 0 8px 18px rgba(255,106,0,0.25);
 }
 
-/* Gallery tab buttons (Jour / Nuit) - match secondary buttons */
-.gallery-tabs{ display:flex; gap:8px; margin:10px 0 6px 0; }
-.tab-btn{
-  background-color: var(--orange);
-  border: 1px solid rgba(230,230,230,0.12);
-  color: white;
-  padding: 8px 14px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: 0.2s ease;
+.viewer-iframe{
+  max-width:100%;
+  max-height:70vh;
+  display:none;
 }
-.tab-btn:hover{ background-color: var(--orange-light); }
-.tab-btn.active{ background-color: var(--orange-light); box-shadow: 0 6px 14px rgba(255,106,0,0.12); }
-.tab-btn:focus{ outline: 2px solid rgba(0,229,255,0.12); outline-offset:2px; }
+
+.gallery-thumb.video-thumb{
+  position: relative;
+  background: rgba(0,0,0,0.08);
+}
+.gallery-thumb.video-thumb .gallery-thumb-label{
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 6px;
+}
 
 /* VISION */
 .vision {
@@ -290,6 +297,18 @@ h1, h2, h3 {
 .service-card h3, .project-card h3 {
   font-size: var(--scale-1);
   margin-bottom: 10px;
+}
+
+.service-tag{
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--cyan);
+  opacity: 0.8;
+  margin-bottom: 8px;
+  display: inline-block;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(0,229,255,0.2);
 }
 
 .services {
@@ -322,7 +341,7 @@ h1, h2, h3 {
   text-align: center;
 }
 
-.project-tag {
+.project-tag{
   font-size: 0.75rem;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -586,6 +605,28 @@ h1, h2, h3 {
   max-width:100%; 
   max-height:70vh; 
   display:none; 
+}
+.viewer-iframe{
+  width: 100%;
+  max-width: 100%;
+  max-height: 70vh;
+  border: none;
+  display: none;
+}
+.gallery-thumb.video-thumb{
+  position: relative;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.12);
+}
+.gallery-thumb.video-thumb .gallery-thumb-label{
+  color: white;
+  font-weight: 700;
+  padding: 10px 14px;
+  border-radius: 6px;
+  background: rgba(0,0,0,0.55);
 }
 
 /* FOOTER */
