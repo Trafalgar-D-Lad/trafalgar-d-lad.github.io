@@ -2,17 +2,16 @@
 (() => {
   const openButtons = document.querySelectorAll(".open-gallery");
   const modals = document.querySelectorAll(".gallery-modal");
+  let lastFocusedElement = null;
 
-  // Helpers
-  const qs = (root, sel) => root.querySelector(sel);
-  const qsa = (root, sel) => [...root.querySelectorAll(sel)];
+  const qs = (root, selector) => root.querySelector(selector);
+  const qsa = (root, selector) => [...root.querySelectorAll(selector)];
 
-  function closeModal(modal) {
-    modal.classList.remove("open");
-    modal.setAttribute("aria-hidden", "true");
-
-    // Stop & unload viewer video to free memory / bandwidth
+  function resetViewer(modal) {
     const viewerVideo = qs(modal, ".viewer-video");
+    const viewerIframe = qs(modal, ".viewer-iframe");
+    const viewerImg = qs(modal, ".viewer-img");
+
     if (viewerVideo) {
       viewerVideo.pause();
       viewerVideo.removeAttribute("src");
@@ -20,138 +19,131 @@
       viewerVideo.style.display = "none";
     }
 
-    // Hide viewer iframe
-    const viewerIframe = qs(modal, ".viewer-iframe");
     if (viewerIframe) {
       viewerIframe.removeAttribute("src");
       viewerIframe.style.display = "none";
     }
 
-    // Hide viewer img
-    const viewerImg = qs(modal, ".viewer-img");
     if (viewerImg) {
       viewerImg.removeAttribute("src");
+      viewerImg.removeAttribute("alt");
       viewerImg.style.display = "none";
+    }
+
+    qsa(modal, ".gallery-thumb.active").forEach((thumb) => {
+      thumb.classList.remove("active");
+      thumb.removeAttribute("aria-current");
+    });
+  }
+
+  function closeModal(modal) {
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
+    resetViewer(modal);
+    lastFocusedElement?.focus();
+  }
+
+  function openModal(modal, opener) {
+    lastFocusedElement = opener;
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+
+    const firstThumb = qs(modal, ".gallery-thumb");
+    if (firstThumb) {
+      firstThumb.click();
+    } else {
+      qs(modal, ".gallery-close")?.focus();
     }
   }
 
-  function openModal(modal) {
-    modal.classList.add("open");
-    modal.setAttribute("aria-hidden", "false");
-
-    // Optionnel: focus sur le bouton fermer (accessibilité)
-    const closeBtn = qs(modal, ".gallery-close");
-    closeBtn?.focus();
+  function setActiveThumb(modal, activeThumb) {
+    qsa(modal, ".gallery-thumb").forEach((thumb) => {
+      const isActive = thumb === activeThumb;
+      thumb.classList.toggle("active", isActive);
+      if (isActive) thumb.setAttribute("aria-current", "true");
+      else thumb.removeAttribute("aria-current");
+    });
   }
 
-  function showMedia(modal, type, src) {
+  function showMedia(modal, type, src, thumb) {
+    resetViewer(modal);
+    setActiveThumb(modal, thumb);
+
     const viewerImg = qs(modal, ".viewer-img");
     const viewerVideo = qs(modal, ".viewer-video");
     const viewerIframe = qs(modal, ".viewer-iframe");
+    const thumbImg = qs(thumb, "img");
 
-    if (type === "img") {
-      if (viewerVideo) {
-        viewerVideo.pause();
-        viewerVideo.removeAttribute("src");
-        viewerVideo.load();
-        viewerVideo.style.display = "none";
-      }
-      if (viewerIframe) {
-        viewerIframe.removeAttribute("src");
-        viewerIframe.style.display = "none";
-      }
-      if (viewerImg) {
-        viewerImg.src = src;
-        viewerImg.style.display = "block";
-      }
+    if (type === "img" && viewerImg) {
+      viewerImg.src = src;
+      viewerImg.alt = thumbImg?.alt || "Aperçu du projet";
+      viewerImg.style.display = "block";
       return;
     }
 
-    if (type === "video") {
-      if (viewerIframe) {
-        viewerIframe.removeAttribute("src");
-        viewerIframe.style.display = "none";
-      }
-      if (viewerImg) {
-        viewerImg.removeAttribute("src");
-        viewerImg.style.display = "none";
-      }
-      if (viewerVideo) {
-        viewerVideo.style.display = "block";
-        viewerVideo.src = src;
-        viewerVideo.load();
-        viewerVideo.play().catch(() => {});
-      }
+    if (type === "video" && viewerVideo) {
+      viewerVideo.src = src;
+      viewerVideo.style.display = "block";
+      viewerVideo.load();
+      viewerVideo.play().catch(() => {});
       return;
     }
 
-    if (type === "youtube") {
-      if (viewerVideo) {
-        viewerVideo.pause();
-        viewerVideo.removeAttribute("src");
-        viewerVideo.load();
-        viewerVideo.style.display = "none";
-      }
-      if (viewerImg) {
-        viewerImg.removeAttribute("src");
-        viewerImg.style.display = "none";
-      }
-      if (viewerIframe) {
-        viewerIframe.style.display = "block";
-        viewerIframe.src = src;
-      }
+    if (type === "youtube" && viewerIframe) {
+      viewerIframe.title = thumb.getAttribute("aria-label") || "Vidéo du projet";
+      viewerIframe.src = src;
+      viewerIframe.style.display = "block";
     }
   }
 
-  // Open gallery buttons
-  openButtons.forEach(btn => {
-    btn.addEventListener("click", () => {
-      const key = btn.dataset.gallery;           // ex: "proj01"
-      const modal = document.getElementById(`${key}-gallery`);
-      if (modal) openModal(modal);
+  openButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const modal = document.getElementById(`${button.dataset.gallery}-gallery`);
+      if (modal) openModal(modal, button);
     });
   });
 
-  // Close: click on X or background
-  modals.forEach(modal => {
-    const closeBtn = qs(modal, ".gallery-close");
-    closeBtn?.addEventListener("click", () => closeModal(modal));
-
-    modal.addEventListener("click", (e) => {
-      if (e.target === modal) closeModal(modal); // click outside content
+  modals.forEach((modal) => {
+    qs(modal, ".gallery-close")?.addEventListener("click", () => closeModal(modal));
+    modal.addEventListener("click", (event) => {
+      if (event.target === modal) closeModal(modal);
     });
   });
 
-  // Global: Esc closes any open modal
-  document.addEventListener("keydown", (e) => {
-    if (e.key !== "Escape") return;
-    const opened = document.querySelector(".gallery-modal.open");
-    if (opened) closeModal(opened);
-  });
-
-  // Close open modal when navigating to an internal anchor link
-  document.addEventListener("click", (e) => {
-    const anchor = e.target.closest('a[href^="#"]');
-    if (!anchor) return;
-    const opened = document.querySelector(".gallery-modal.open");
-    if (!opened) return;
-    if (anchor.closest(".gallery-modal")) return;
-    closeModal(opened);
-  });
-
-  // Event delegation: thumbs click (works for all modals)
-  document.addEventListener("click", (e) => {
-    const thumb = e.target.closest(".gallery-thumb");
+  document.addEventListener("click", (event) => {
+    const thumb = event.target.closest(".gallery-thumb");
     if (!thumb) return;
 
     const modal = thumb.closest(".gallery-modal");
-    if (!modal) return;
-
-    const type = thumb.dataset.type;     // "img" | "video" | "youtube"
-    const src = thumb.dataset.src;       // file path or embed URL
-    if (!type || !src) return;
-
-    showMedia(modal, type, src);
+    const { type, src } = thumb.dataset;
+    if (modal && type && src) showMedia(modal, type, src, thumb);
   });
 
+  document.addEventListener("keydown", (event) => {
+    const opened = document.querySelector(".gallery-modal.open");
+    if (!opened) return;
+
+    if (event.key === "Escape") {
+      closeModal(opened);
+      return;
+    }
+
+    if (event.key === "Tab") {
+      const focusable = qsa(opened, 'button, [href], iframe, video[controls], [tabindex]:not([tabindex="-1"])')
+        .filter((element) => !element.hasAttribute("disabled"));
+      if (!focusable.length) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+  });
 })();
