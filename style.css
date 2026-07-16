@@ -685,6 +685,46 @@ main > section:last-child::after { display: none; }
   background: rgba(49, 31, 20, 0.72);
 }
 
+.contact-direct {
+  max-width: 640px;
+  margin: 30px auto 0;
+  padding: 22px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: rgba(7, 16, 24, 0.38);
+}
+
+.contact-links,
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 20px;
+}
+
+.contact-links {
+  margin-top: 14px;
+}
+
+.contact-links a,
+.footer-links a {
+  color: var(--cyan);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.contact-links a:hover,
+.contact-links a:focus-visible,
+.footer-links a:hover,
+.footer-links a:focus-visible {
+  color: var(--orange-light);
+  text-decoration: underline;
+}
+
+.footer-links {
+  margin: 14px 0;
+}
+
 @media (max-width: 920px) {
   .case-study-grid,
   .story-hook-card {
