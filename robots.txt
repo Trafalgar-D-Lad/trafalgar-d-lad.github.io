@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://trafalgar-d-lad.github.io/sitemap.xml

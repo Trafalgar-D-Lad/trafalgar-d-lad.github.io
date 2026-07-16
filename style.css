@@ -7,7 +7,7 @@
   --orange: #ff6a00;
   --orange-light: #ffb000;
   --text-light: #e6e6e6;
-  --text-muted: rgba(230, 230, 230, 0.76);
+  --text-muted: rgba(230, 230, 230, 0.84);
   --border: rgba(255, 255, 255, 0.09);
   --shadow-cyan: 0 16px 38px rgba(0, 229, 255, 0.14);
   --shadow-orange: 0 10px 26px rgba(255, 106, 0, 0.24);
@@ -176,7 +176,8 @@ main > section:last-child::after { display: none; }
 .header-cta { margin-left: 6px; padding: 10px 19px !important; }
 
 /* Buttons */
-.btn-primary {
+.btn-primary,
+.btn-secondary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -190,8 +191,11 @@ main > section:last-child::after { display: none; }
   transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 .btn-primary { padding: 13px 28px; color: #fff; background: var(--orange); }
+.btn-secondary { padding: 12px 26px; color: var(--cyan); background: transparent; border-color: rgba(0, 229, 255, 0.38); }
 .btn-primary:hover,
 .btn-primary:focus-visible { background: var(--orange-light); transform: translateY(-2px); box-shadow: var(--shadow-orange); }
+.btn-secondary:hover,
+.btn-secondary:focus-visible { color: var(--bg-dark); background: var(--cyan); transform: translateY(-2px); box-shadow: var(--shadow-cyan); }
 .btn-large { padding-inline: 28px; }
 
 /* Home hero */
@@ -353,7 +357,7 @@ main > section:last-child::after { display: none; }
   position: relative;
   isolation: isolate;
   min-height: 100vh;
-  background: var(--bg-dark) url("images/sweetlandia/WB-400.webp") center top / cover fixed no-repeat;
+  background: var(--bg-dark) url("images/sweetlandia/WB-400.webp") center top / cover scroll no-repeat;
 }
 .sweetlandia-page #main-content::before {
   content: "";
@@ -510,7 +514,6 @@ main > section:last-child::after { display: none; }
   .sweet-gallery-main { grid-column: 1 / -1; }
   .gallery-content { width: 100%; padding: 22px 16px; }
   .gallery-viewer { min-height: 220px; }
-  .sweetlandia-page #main-content { background-attachment: scroll; }
   .sweet-hero { min-height: auto; padding-top: 190px; padding-bottom: 80px; }
   .sweet-hero-content { padding: 28px 22px; backdrop-filter: blur(5px); }
 }
@@ -534,4 +537,196 @@ main > section:last-child::after { display: none; }
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+
+/* Navigation state */
+.nav-link[aria-current="page"] {
+  color: var(--cyan);
+  border-color: rgba(0, 229, 255, 0.25);
+  background: rgba(0, 229, 255, 0.08);
+}
+
+/* Accessible forms */
+.form-field {
+  display: grid;
+  gap: 7px;
+  text-align: left;
+}
+.form-field label {
+  color: var(--text-light);
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+.form-field label span {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+.honeypot {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  white-space: nowrap !important;
+}
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 24px;
+}
+.contact-links a {
+  color: var(--cyan);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+/* Project summaries and case studies */
+.project-summary {
+  margin-bottom: 16px;
+  text-align: left;
+}
+.project-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 22px;
+  list-style: none;
+}
+.project-meta li {
+  padding: 5px 9px;
+  border: 1px solid rgba(0, 229, 255, 0.22);
+  border-radius: 999px;
+  color: var(--cyan);
+  background: rgba(0, 229, 255, 0.06);
+  font-size: 0.75rem;
+}
+.case-study-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+.case-study-card {
+  padding: clamp(26px, 4vw, 40px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: rgba(7, 16, 24, 0.68);
+  backdrop-filter: blur(6px);
+}
+.case-study-label {
+  margin-bottom: 10px;
+  color: var(--orange-light);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.case-study-card h3 {
+  margin-bottom: 24px;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+}
+.case-study-details {
+  display: grid;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+.case-study-details div {
+  display: grid;
+  grid-template-columns: 105px 1fr;
+  gap: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.case-study-details dt {
+  color: var(--cyan);
+  font-weight: 600;
+}
+.case-study-details dd {
+  color: var(--text-muted);
+}
+.compact-cta-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 36px;
+  padding: clamp(28px, 5vw, 48px);
+  border: 1px solid rgba(255, 176, 0, 0.22);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(145deg, rgba(49,31,20,0.78), rgba(7,16,24,0.9));
+}
+.compact-cta-card h2 {
+  margin-bottom: 10px;
+}
+
+/* Sweetlandia narrative entry */
+.story-hook-card {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(40px, 7vw, 90px);
+  align-items: start;
+  padding: clamp(30px, 5vw, 52px);
+  border: 1px solid rgba(255, 176, 0, 0.24);
+  border-radius: var(--radius-lg);
+  background: rgba(49, 31, 20, 0.68);
+  backdrop-filter: blur(7px);
+}
+.story-hook-card .section-title {
+  margin-bottom: 0;
+}
+.story-hook-copy {
+  display: grid;
+  gap: 18px;
+  font-size: 1.08rem;
+}
+.kingdom-card-featured {
+  border-color: rgba(255, 176, 0, 0.36);
+  background: rgba(49, 31, 20, 0.72);
+}
+
+@media (max-width: 920px) {
+  .case-study-grid,
+  .story-hook-card {
+    grid-template-columns: 1fr;
+  }
+  .compact-cta-card {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 560px) {
+  .case-study-details div {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}
+
+/* 404 page */
+.error-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+.error-main {
+  width: 100%;
+  padding: 40px 0;
+}
+.error-card {
+  max-width: 760px;
+  padding: clamp(32px, 7vw, 72px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(145deg, rgba(15,42,53,0.9), rgba(7,16,24,0.96));
+  box-shadow: 0 28px 70px rgba(0,0,0,0.35);
+  text-align: center;
+}
+.error-card h1 {
+  margin-bottom: 18px;
+  color: var(--cyan);
+  font-size: clamp(2rem, 6vw, 4rem);
+}
+.error-card p:not(.section-kicker) {
+  margin-bottom: 28px;
 }
