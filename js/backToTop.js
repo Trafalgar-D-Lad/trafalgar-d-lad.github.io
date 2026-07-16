@@ -1,16 +1,15 @@
-const btn = document.getElementById("backToTop");
+(() => {
+  const button = document.getElementById("backToTop");
+  if (!button) return;
 
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 400) {
-    btn.classList.add("show");
-  } else {
-    btn.classList.remove("show");
-  }
-});
+  const updateVisibility = () => {
+    button.classList.toggle("show", window.scrollY > 500);
+  };
 
-btn.addEventListener("click", () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
+  button.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   });
-});
+
+  window.addEventListener("scroll", updateVisibility, { passive: true });
+  updateVisibility();
+})();
