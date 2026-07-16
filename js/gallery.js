@@ -53,6 +53,7 @@
     const firstThumb = qs(modal, ".gallery-thumb");
     if (firstThumb) {
       firstThumb.click();
+      firstThumb.focus();
     } else {
       qs(modal, ".gallery-close")?.focus();
     }
