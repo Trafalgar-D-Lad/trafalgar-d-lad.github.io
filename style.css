@@ -250,7 +250,7 @@ main > section:last-child::after { display: none; }
 .featured-project-visual img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
 .featured-project-card:hover .featured-project-visual img { transform: scale(1.025); }
 .featured-project-content { display: flex; flex-direction: column; justify-content: center; padding: clamp(32px, 5vw, 58px); text-align: left; }
-.featured-project-content h2 { margin-bottom: 20px; color: #fff; font-size: clamp(2.5rem, 5vw, 4.3rem); }
+.featured-project-content h3 { margin-bottom: 20px; color: #fff; font-size: clamp(2rem, 4vw, 3.4rem); }
 .featured-lead { font-size: 1.05rem; }
 .featured-skills { display: flex; flex-wrap: wrap; gap: 9px; margin: 25px 0 30px; list-style: none; }
 .featured-skills li { padding: 7px 11px; border: 1px solid rgba(255, 176, 0, 0.28); border-radius: 999px; color: rgba(255, 255, 255, 0.88); background: rgba(255, 176, 0, 0.07); font-size: 0.8rem; }
