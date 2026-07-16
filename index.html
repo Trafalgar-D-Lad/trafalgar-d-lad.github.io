@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Portfolio de Trafalgar D. Lad : direction artistique, modélisation 3D, IA générative, prototypage et impression 3D, du concept à la production." />
     <meta name="author" content="Trafalgar D. Lad" />
@@ -20,8 +20,8 @@
       <div class="container header-inner">
         <a class="artist-name" aria-label="Retour à l’accueil" href="#top">Trafalgar D. Lad</a>
         <nav class="nav" aria-label="Navigation principale">
-          <a class="nav-link" href="#sweetlandia">Sweetlandia</a>
-          <a class="nav-link" href="#vitrine">Projets</a>
+          <a class="nav-link" href="projets/sweetlandia.html">Sweetlandia</a>
+          <a class="nav-link" href="projets.html">Projets</a>
           <a class="nav-link" href="#services">Services</a>
           <a class="btn-primary header-cta" href="#contact">Contact</a>
         </nav>
@@ -37,8 +37,8 @@
           <p class="hero-lead">Modélisation 3D, direction artistique assistée par IA et prototypage rapide.<br />Du concept numérique à l’animation ou à l’objet prêt à produire.</p>
 
           <div class="hero-cta">
-            <a class="btn-primary" href="#vitrine">Découvrir mes projets</a>
-            <a class="btn-primary" href="#contact">Demander un devis</a>
+            <a class="btn-primary" href="projets.html">Découvrir mes projets</a>
+            <a class="btn-primary btn-large" href="#contact">Demander un devis</a>
           </div>
 
           <p class="hero-trust">Réponse sous 24h • Workflow structuré</p>
@@ -57,7 +57,7 @@
       <!-- SWEETLANDIA -->
       <section id="sweetlandia" class="featured-project" aria-labelledby="sweetlandia-title">
         <div class="container">
-          <h2 class="section-title">WIP : Sweetlandia</h2>
+          <h2 class="section-title">Projet en cours : Sweetlandia</h2>
           <div class="featured-project-card">
             <div class="featured-project-visual">
               <img alt="Carte officielle de l’univers Sweetlandia" decoding="async" loading="lazy" src="images/sweetlandia/WB-400.webp" width="2048" height="1152" />
@@ -79,43 +79,20 @@
         </div>
       </section>
 
-      <!-- VITRINE -->
-      <section id="vitrine" class="projects section-alt">
-        <div class="container">
-          <h2 class="section-title">Vitrine</h2>
-          <div class="project-grid">
-            <article class="project-card proj01">
-              <div class="project-image" role="img" aria-label="Logo et motion design"></div>
-              
-            <!-- MOTION DESIGN -->
-              <p class="project-tag">Identité pensée pour diffusion digitale</p>
-              <h3>Logo et motion design</h3>
-              <button type="button" class="btn-primary" data-gallery="proj01">Voir la galerie</button>
-            </article>
+      <!-- PROJETS -->
+      <section id="projets" class="projects-preview section-alt">
+        <div class="container projects-preview-layout">
+          <div>
+            <p class="section-kicker">Portfolio</p>
+            <h2 class="section-title">Projets et réalisations</h2>
+            <p class="projects-preview-text">
+              Retrouvez mes travaux en motion design, création assistée par IA,
+              modélisation 3D, architecture et prototypage pour fabrication.
+            </p>
+          </div>
 
-            <!-- IA - PRINT -->
-            <article class="project-card proj02">
-              <div class="project-image" role="img" aria-label="IA, Blender et impression 3D"></div>
-              <p class="project-tag">Du prompt à l’objet physique</p>
-              <h3>IA, Blender et impression 3D</h3>
-              <button type="button" class="btn-primary" data-gallery="proj02">Voir la galerie</button>
-            </article>
-
-            <!-- ARCHITECTURE-->
-            <article class="project-card proj03">
-              <div class="project-image" role="img" aria-label="Architecture intérieure et extérieure"></div>
-              <p class="project-tag">Visualisation avant réalisation</p>
-              <h3>Architecture intérieure et extérieure</h3>
-              <button type="button" class="btn-primary" data-gallery="proj03">Voir la galerie</button>
-            </article>
-
-            <!-- VISUELS -->
-            <article class="project-card proj04">
-              <div class="project-image" role="img" aria-label="Prototype produit prêt pour production"></div>
-              <p class="project-tag">Optimisation design pour fabrication</p>
-              <h3>Prototype produit prêt pour production</h3>
-              <button type="button" class="btn-primary" data-gallery="proj04">Voir la galerie</button>
-            </article>
+          <div class="projects-preview-action">
+            <a class="btn-primary" href="projets.html">Voir tous les projets</a>
           </div>
         </div>
       </section>
@@ -218,7 +195,7 @@
             <textarea name="message" aria-label="Décrivez votre projet..." placeholder="Décrivez votre projet..." rows="6" required></textarea>
 
             <!-- Honeypot anti-spam -->
-            <input type="hidden" name="_gotcha" />
+            <input type="text" name="_gotcha" style="display:none" />
 
             <p class="form-note">Toutes les demandes sont étudiées sérieusement.</p>
 
@@ -230,113 +207,6 @@
       </section>
     </main>
 
-    <!-- GALLERY MODAL: Projet 01 -->
-    <div id="proj01-gallery" class="gallery-modal" role="dialog" aria-hidden="true" aria-modal="true" aria-labelledby="proj01-gallery-title">
-      <div class="gallery-content" tabindex="-1">
-        <button type="button" class="gallery-close" aria-label="Fermer">×</button>
-        <h3 id="proj01-gallery-title">Logo &amp; Motion Design</h3>
-        <div class="gallery-grid">
-          <button type="button" class="gallery-thumb video-thumb" data-src="https://www.youtube.com/embed/z2ZWrQrEErI?autoplay=1&amp;rel=0" data-type="youtube" aria-label="Lire la vidéo 1 du projet 01" title="Lire la vidéo 1 du projet 01">
-            <img decoding="async" loading="lazy" alt="Madinina Vibes Events" src="images/01_LOGO/MVE.webp" />
-            <span class="gallery-thumb-label">Madinina Vibes Events</span>
-          </button>
-
-          <button type="button" class="gallery-thumb video-thumb" data-src="https://www.youtube.com/embed/qS_cO6YxDHs?autoplay=1&amp;rel=0" data-type="youtube" aria-label="Lire la vidéo 2 du projet 01" title="Lire la vidéo 2 du projet 01">
-            <img decoding="async" loading="lazy" alt="IAMG" src="images/01_LOGO/IAMG_poster.webp" />
-            <span class="gallery-thumb-label">IAMG Web Radio</span>
-          </button>
-
-          <button type="button" class="gallery-thumb video-thumb" data-src="https://www.youtube.com/embed/ag9iZdRghRM?autoplay=1&amp;rel=0" data-type="youtube" aria-label="Lire la vidéo 3 du projet 01" title="Lire la vidéo 3 du projet 01">
-            <img decoding="async" loading="lazy" alt="MDP GOLD" src="images/01_LOGO/MDP_GOLD_poster.webp" />
-            <span class="gallery-thumb-label">MDP GOLD</span>
-          </button>
-
-          <button type="button" class="gallery-thumb video-thumb" data-src="https://www.youtube.com/embed/gVKG2l-m_jc?autoplay=1&amp;rel=0" data-type="youtube" aria-label="Lire la vidéo 4 du projet 01" title="Lire la vidéo 4 du projet 01">
-            <img decoding="async" loading="lazy" alt="MDP BLUE" src="images/01_LOGO/MDP_BLUE_poster.webp" />
-            <span class="gallery-thumb-label">MDP BLUE</span>
-          </button>
-        </div>
-
-        <div class="gallery-viewer">
-          <img class="viewer-img" alt="Aperçu du projet" src="" />
-          <video class="viewer-video" controls src=""></video>
-          <iframe class="viewer-iframe" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen src=""></iframe>
-        </div>
-      </div>
-    </div>
-
-    <!-- GALLERY MODAL: Projet 02 -->
-    <div id="proj02-gallery" class="gallery-modal" role="dialog" aria-hidden="true" aria-modal="true" aria-labelledby="proj02-gallery-title">
-      <div class="gallery-content" tabindex="-1">
-        <button type="button" class="gallery-close" aria-label="Fermer">×</button>
-        <h3 id="proj02-gallery-title">IA → Blender → Impression PLA</h3>
-        <div class="gallery-grid">
-          <button type="button" class="gallery-thumb" data-src="images/02_IA_PRINT/BC_01.webp" data-type="img"><img decoding="async" loading="lazy" alt="BC 01" src="images/02_IA_PRINT/BC_01.webp" /></button>
-          <button type="button" class="gallery-thumb" data-src="images/02_IA_PRINT/BC_3D_01.webp" data-type="img"><img decoding="async" loading="lazy" alt="BC 3D 01" src="images/02_IA_PRINT/BC_3D_01.webp" /></button>
-          <button type="button" class="gallery-thumb" data-src="images/02_IA_PRINT/BC_3D_02.webp" data-type="img"><img decoding="async" loading="lazy" alt="BC 3D 02" src="images/02_IA_PRINT/BC_3D_02.webp" /></button>
-        </div>
-
-        <div class="gallery-viewer">
-          <img class="viewer-img" alt="Aperçu du projet" src="" />
-          <video class="viewer-video" controls src=""></video>
-        </div>
-      </div>
-    </div>
-
-    <!-- GALLERY MODAL: Projet 03 -->
-    <div id="proj03-gallery" class="gallery-modal" role="dialog" aria-hidden="true" aria-modal="true" aria-labelledby="proj03-gallery-title">
-      <div class="gallery-content" tabindex="-1">
-        <button type="button" class="gallery-close" aria-label="Fermer">×</button>
-        <h3 id="proj03-gallery-title">Architecture</h3>
-        <div class="gallery-grid">
-          <button type="button" class="gallery-thumb" data-src="images/03_INTERIOR/jour/Jour_01.webp" data-type="img"><img decoding="async" loading="lazy" alt="Jour 01" src="images/03_INTERIOR/jour/Jour_01.webp" /></button>
-          <button type="button" class="gallery-thumb" data-src="images/03_INTERIOR/nuit/nuit_01.webp" data-type="img"><img decoding="async" loading="lazy" alt="Nuit 01" src="images/03_INTERIOR/nuit/nuit_01.webp" /></button>
-          <button type="button" class="gallery-thumb" data-src="images/03_INTERIOR/jour/Jour_02.webp" data-type="img"><img decoding="async" loading="lazy" alt="Jour 02" src="images/03_INTERIOR/jour/Jour_02.webp" /></button>
-          <button type="button" class="gallery-thumb" data-src="images/03_INTERIOR/nuit/nuit_02.webp" data-type="img"><img decoding="async" loading="lazy" alt="Nuit 02" src="images/03_INTERIOR/nuit/nuit_02.webp" /></button>
-          <button type="button" class="gallery-thumb" data-src="images/03_INTERIOR/jour/Jour_03.webp" data-type="img"><img decoding="async" loading="lazy" alt="Jour 03" src="images/03_INTERIOR/jour/Jour_03.webp" /></button>
-          <button type="button" class="gallery-thumb" data-src="images/03_INTERIOR/nuit/nuit_03.webp" data-type="img"><img decoding="async" loading="lazy" alt="Nuit 03" src="images/03_INTERIOR/nuit/nuit_03.webp" /></button>
-          <button type="button" class="gallery-thumb" data-src="images/03_INTERIOR/jour/Jour_04.webp" data-type="img"><img decoding="async" loading="lazy" alt="Jour 04" src="images/03_INTERIOR/jour/Jour_04.webp" /></button>
-          <button type="button" class="gallery-thumb" data-src="images/03_INTERIOR/nuit/nuit_04.webp" data-type="img"><img decoding="async" loading="lazy" alt="Nuit 04" src="images/03_INTERIOR/nuit/nuit_04.webp" /></button>
-          <button type="button" class="gallery-thumb video-thumb" data-src="https://www.youtube.com/embed/2HnQwHyhj9A?autoplay=1&amp;rel=0" data-type="youtube" aria-label="Lire la vidéo du projet 03" title="Lire la vidéo du projet 03">
-            <img decoding="async" loading="lazy" alt="Visualisation architecturale ArchViz" src="images/03_INTERIOR/ArchViz.webp" />
-            <span class="gallery-thumb-label">ArchViz</span>
-          </button>
-        </div>
-
-        <div class="gallery-viewer">
-          <img class="viewer-img" alt="Aperçu du projet" src="" />
-          <video class="viewer-video" controls src=""></video>
-          <iframe class="viewer-iframe" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen src=""></iframe>
-        </div>
-      </div>
-    </div>
-
-    <!-- GALLERY MODAL: Projet 04 -->
-    <div id="proj04-gallery" class="gallery-modal" role="dialog" aria-hidden="true" aria-modal="true" aria-labelledby="proj04-gallery-title">
-      <div class="gallery-content" tabindex="-1">
-        <button type="button" class="gallery-close" aria-label="Fermer">×</button>
-        <h3 id="proj04-gallery-title">Prototype produit prêt pour production</h3>
-        <div class="gallery-grid">
-          <button type="button" class="gallery-thumb video-thumb" data-src="https://www.youtube.com/embed/TviyLzZ3dlU?autoplay=1&amp;rel=0" data-type="youtube" aria-label="Lire la vidéo 1 du projet 04" title="Lire la vidéo 1 du projet 04">
-            <img decoding="async" loading="lazy" alt="Shonen Pack" src="images/04_PRODUCT/Product_poster.webp" />
-            <span class="gallery-thumb-label">Shonen Pack</span>
-          </button>
-
-          <button type="button" class="gallery-thumb video-thumb" data-src="https://www.youtube.com/embed/v06SdcgqHZI?autoplay=1&amp;rel=0" data-type="youtube" aria-label="Lire la vidéo 2 du projet 04" title="Lire la vidéo 2 du projet 04">
-            <img decoding="async" loading="lazy" alt="Red Bull" src="images/04_PRODUCT/RedBull.webp" />
-            <span class="gallery-thumb-label">RedBull</span>
-          </button>
-        </div>
-
-        <div class="gallery-viewer">
-          <img class="viewer-img" alt="Aperçu du projet" src="" />
-          <video class="viewer-video" controls src=""></video>
-          <iframe class="viewer-iframe" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen src=""></iframe>
-        </div>
-      </div>
-    </div>
-
-    <script defer src="js/gallery.js"></script>
     <script defer src="js/backToTop.js"></script>
 
     <!-- FOOTER -->
@@ -347,6 +217,6 @@
       </div>
     </footer>
 
-    <button type="button" id="backToTop" aria-label="Retour en haut">↑</button>
+    <button id="backToTop" aria-label="Retour en haut">↑</button>
   </body>
 </html>
