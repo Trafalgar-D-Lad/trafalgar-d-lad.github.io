@@ -1,0 +1,71 @@
+<section class="visitor-feedback" id="avis" aria-labelledby="feedback-title">
+  <div class="container feedback-card">
+    <div class="feedback-intro">
+      <p class="section-kicker">Votre avis</p>
+      <h2 class="section-title" id="feedback-title">Que pensez-vous de mon portfolio ?</h2>
+      <p>
+        Votre retour m’aide à améliorer la présentation des projets, la navigation
+        et les futurs contenus du site.
+      </p>
+    </div>
+
+    <form
+      class="feedback-form"
+      action="https://formspree.io/f/xnjevark"
+      method="POST"
+    >
+      <fieldset class="feedback-rating">
+        <legend>Votre impression générale</legend>
+
+        <label>
+          <input type="radio" name="rating" value="Très bonne" required />
+          <span>Très bonne</span>
+        </label>
+
+        <label>
+          <input type="radio" name="rating" value="Bonne" />
+          <span>Bonne</span>
+        </label>
+
+        <label>
+          <input type="radio" name="rating" value="À améliorer" />
+          <span>À améliorer</span>
+        </label>
+      </fieldset>
+
+      <div class="form-field">
+        <label for="feedback-profile">Vous êtes… <span>— optionnel</span></label>
+        <select id="feedback-profile" name="visitor_profile">
+          <option value="">Sélectionner</option>
+          <option>Client potentiel</option>
+          <option>Recruteur</option>
+          <option>Artiste ou créatif</option>
+          <option>Visiteur curieux</option>
+          <option>Autre</option>
+        </select>
+      </div>
+
+      <div class="form-field">
+        <label for="feedback-highlight">Qu’avez-vous le plus apprécié ? <span>— optionnel</span></label>
+        <input id="feedback-highlight" type="text" name="highlight" />
+      </div>
+
+      <div class="form-field">
+        <label for="feedback-message">Que pourrais-je améliorer ? <span>— optionnel</span></label>
+        <textarea id="feedback-message" name="message" rows="4"></textarea>
+      </div>
+
+      <input class="honeypot" type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
+      <input type="hidden" name="source" value="Portfolio Astro" />
+
+      <p class="form-note">Aucune adresse email n’est demandée pour laisser un avis.</p>
+      <button
+        class="btn-secondary"
+        type="submit"
+        data-goatcounter-click="feedback-submit"
+      >
+        Envoyer mon avis
+      </button>
+    </form>
+  </div>
+</section>

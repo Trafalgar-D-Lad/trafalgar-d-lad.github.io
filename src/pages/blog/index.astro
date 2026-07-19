@@ -1,0 +1,42 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
+---
+<BaseLayout
+  title="Blog | Trafalgar D. Lad"
+  description="Making-of, réflexions et retours d’expérience autour de Sweetlandia, Blender, l’IA générative et l’impression 3D."
+  canonical="https://trafalgar-d-lad.github.io/blog/"
+  image="https://trafalgar-d-lad.github.io/images/sweetlandia/WB-400.webp"
+  imageAlt="Carte officielle de l’univers Sweetlandia"
+>
+  <main id="main-content">
+    <section class="page-hero">
+      <div class="container page-hero-content">
+        <p class="section-kicker">Journal de création</p>
+        <h1>Blog</h1>
+        <p class="page-hero-subtitle">Making-of, méthodes de travail et avancées de mes projets.</p>
+      </div>
+    </section>
+    <section class="projects section-alt">
+      <div class="container">
+        {posts.length === 0 ? (
+          <p>Aucun article n’est encore publié.</p>
+        ) : (
+          <div class="project-grid">
+            {posts.map((post) => (
+              <article class="project-card">
+                <p class="project-tag">{post.data.categories.join(' • ')}</p>
+                <h2>{post.data.title}</h2>
+                <p class="project-summary">{post.data.description}</p>
+                <a class="btn-primary" href={`/blog/${post.id}/`}>Lire l’article</a>
+              </article>
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
+  </main>
+</BaseLayout>

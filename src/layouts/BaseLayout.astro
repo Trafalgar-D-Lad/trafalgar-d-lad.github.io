@@ -1,0 +1,44 @@
+---
+import '../styles/global.css';
+import Seo from '../components/Seo.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import BackToTop from '../components/BackToTop.astro';
+import Analytics from '../components/Analytics.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical: string;
+  image: string;
+  imageAlt: string;
+  type?: 'website' | 'article';
+  current?: 'home' | 'projects' | 'sweetlandia';
+  bodyClass?: string;
+  jsonLd?: Record<string, unknown>;
+  gallery?: boolean;
+}
+const props = Astro.props;
+---
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <Seo {...props} />
+    <title>{props.title}</title>
+    <link rel="icon" href="/images/logo_26.webp" type="image/webp" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" />
+  </head>
+  <body id="top" class={props.bodyClass}>
+    <a class="skip-link" href="#main-content">Aller au contenu</a>
+    <Header current={props.current} />
+    <slot />
+    <Footer />
+    <BackToTop />
+    <Analytics />
+    {props.gallery && <script src="/js/gallery.js" defer></script>}
+  </body>
+</html>

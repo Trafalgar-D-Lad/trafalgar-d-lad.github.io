@@ -1,0 +1,67 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('sweetlandia', ({ data }) => !data.draft);
+  return posts.map((post) => ({ params: { id: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const canonical = `https://trafalgar-d-lad.github.io/projets/sweetlandia/${post.id}/`;
+const image = post.data.image
+  ? new URL(post.data.image, 'https://trafalgar-d-lad.github.io').href
+  : 'https://trafalgar-d-lad.github.io/images/sweetlandia/WB-400.webp';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.publishedAt.toISOString(),
+  dateModified: (post.data.updatedAt ?? post.data.publishedAt).toISOString(),
+  author: { '@type': 'Person', name: 'Trafalgar D. Lad' },
+  image,
+  url: canonical,
+  inLanguage: 'fr'
+};
+---
+<BaseLayout
+  title={`${post.data.title} | Journal Sweetlandia`}
+  description={post.data.description}
+  canonical={canonical}
+  image={image}
+  imageAlt={post.data.imageAlt ?? post.data.title}
+  type="article"
+  current="sweetlandia"
+  bodyClass="sweetlandia-page"
+  jsonLd={jsonLd}
+>
+  <main id="main-content">
+    <article class="sweet-post-hero">
+      <div class="container sweet-post-header">
+        <a class="project-back-link" href="/projets/sweetlandia.html#journal">← Retour au journal Sweetlandia</a>
+        <p class="section-kicker">{post.data.phase} • {post.data.categories.join(' • ')}</p>
+        <h1>{post.data.title}</h1>
+        <p class="page-hero-subtitle">{post.data.description}</p>
+        <p class="post-date"><time datetime={post.data.publishedAt.toISOString()}>{post.data.publishedAt.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</time></p>
+      </div>
+      {post.data.image && <img class="sweet-post-cover" src={post.data.image} alt={post.data.imageAlt ?? post.data.title} />}
+    </article>
+
+    <section class="sweet-post-body section-alt">
+      <div class="container article-content"><Content /></div>
+    </section>
+
+    <section class="sweet-post-footer">
+      <div class="container compact-cta-card">
+        <div>
+          <p class="section-kicker">Journal de production</p>
+          <h2>Découvrez les autres étapes du projet.</h2>
+        </div>
+        <a class="btn-primary" href="/projets/sweetlandia.html#journal">Voir toute la chronologie</a>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
