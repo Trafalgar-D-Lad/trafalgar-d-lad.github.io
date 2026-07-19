@@ -1,23 +1,38 @@
 ---
-import { getCollection } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 
-const posts = (await getCollection('sweetlandia', ({ data }) => !data.draft))
-  .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
-const featuredPost = posts.find((post) => post.data.featured) ?? posts[0];
-const otherPosts = featuredPost ? posts.filter((post) => post.id !== featuredPost.id) : posts;
+const posts = (
+  await getCollection("sweetlandia", ({ data }) => !data.draft)
+).sort(
+  (a, b) =>
+    b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf()
+);
+
+const featuredPost =
+  posts.find((post) => post.data.featured) ?? posts[0];
+
+const otherPosts = featuredPost
+  ? posts.filter((post) => post.id !== featuredPost.id)
+  : posts;
 
 const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Blog',
-  name: 'Journal de production Sweetlandia',
-  creator: { '@type': 'Person', name: 'Trafalgar D. Lad' },
-  url: 'https://trafalgar-d-lad.github.io/projets/sweetlandia.html',
-  image: 'https://trafalgar-d-lad.github.io/images/sweetlandia/WB-400.webp',
-  description: 'Journal de production de Sweetlandia : worldbuilding, préproduction, modélisation 3D et évolution du projet.',
-  inLanguage: 'fr'
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  name: "Journal de production Sweetlandia",
+  creator: {
+    "@type": "Person",
+    name: "Trafalgar D. Lad"
+  },
+  url: "https://trafalgar-d-lad.github.io/projets/sweetlandia.html",
+  image:
+    "https://trafalgar-d-lad.github.io/images/sweetlandia/WB-400.webp",
+  description:
+    "Journal de production de Sweetlandia : worldbuilding, préproduction, modélisation 3D et évolution du projet.",
+  inLanguage: "fr"
 };
 ---
+
 <BaseLayout
   title="Journal Sweetlandia | Trafalgar D. Lad"
   description="Suivez l’évolution de Sweetlandia : worldbuilding, bible de production, direction artistique, modélisation 3D et préparation de la BD ou du webtoon."
@@ -30,106 +45,347 @@ const jsonLd = {
   jsonLd={jsonLd}
 >
   <main id="main-content">
-    <section class="sweet-hero" aria-labelledby="sweet-title">
+    <section
+      class="sweet-hero"
+      aria-labelledby="sweet-title"
+    >
       <div class="container sweet-hero-content">
-        <a class="project-back-link" href="/#sweetlandia">← Retour au portfolio</a>
-        <p class="featured-eyebrow">Univers original • Journal de production</p>
+        <a
+          class="project-back-link"
+          href="/#sweetlandia"
+        >
+          ← Retour au portfolio
+        </a>
+
+        <p class="featured-eyebrow">
+          Univers original • Journal de production
+        </p>
+
         <h1 id="sweet-title">Sweetlandia</h1>
-        <p class="sweet-hero-lead">Suivez la construction d’un monde fantasy gourmand, de ses fondations narratives à ses environnements 3D et à son futur format BD ou webtoon.</p>
+
+        <p class="sweet-hero-lead">
+          Suivez la construction d’un monde fantasy gourmand,
+          de ses fondations narratives à ses environnements 3D
+          et à son futur format BD ou webtoon.
+        </p>
+
         <div class="sweet-hero-actions">
-          <a class="btn-primary" href="#journal">Voir les dernières avancées</a>
-          <a class="btn-secondary btn-large" href="#projet">Découvrir le projet</a>
+          <a
+            class="btn-primary"
+            href="#journal"
+          >
+            Voir les dernières avancées
+          </a>
+
+          <a
+            class="btn-secondary btn-large"
+            href="#projet"
+          >
+            Découvrir le projet
+          </a>
         </div>
       </div>
     </section>
 
-    <section class="sweet-intro section-alt" id="projet">
+    <section
+      class="sweet-intro section-alt"
+      id="projet"
+    >
       <div class="container sweet-two-columns">
         <div>
           <p class="section-kicker">Le projet</p>
-          <h2 class="section-title">Un univers pensé pour évoluer</h2>
+
+          <h2 class="section-title">
+            Un univers pensé pour évoluer
+          </h2>
         </div>
+
         <div class="sweet-intro-copy">
-          <p>Sweetlandia est organisé autour du Four Central, au cœur d’un monde évoquant une fleur de pain d’épices. Chaque royaume possède sa propre culture, son architecture, ses ressources et ses tensions.</p>
-          <p>Le projet est développé pour devenir une bande dessinée ou un webtoon, tout en restant compatible avec la création d’environnements 3D, de figurines, d’un artbook et de produits dérivés.</p>
-          <p><strong>Point de départ narratif :</strong> Boby Cake se lance à la recherche de Sir Frost et découvre progressivement les forces qui menacent l’équilibre du monde.</p>
+          <p>
+            Sweetlandia est organisé autour du Four Central,
+            au cœur d’un monde évoquant une fleur de pain
+            d’épices. Chaque royaume possède sa propre culture,
+            son architecture, ses ressources et ses tensions.
+          </p>
+
+          <p>
+            Le projet est développé pour devenir une bande
+            dessinée ou un webtoon, tout en restant compatible
+            avec la création d’environnements 3D, de figurines,
+            d’un artbook et de produits dérivés.
+          </p>
+
+          <p>
+            <strong>Point de départ narratif :</strong>
+            Boby Cake se lance à la recherche de Sir Frost
+            et découvre progressivement les forces qui menacent
+            l’équilibre du monde.
+          </p>
         </div>
       </div>
     </section>
 
-    <section class="sweet-status" aria-labelledby="status-title">
+    <section
+      class="sweet-status"
+      aria-labelledby="status-title"
+    >
       <div class="container sweet-status-layout">
         <div>
           <p class="section-kicker">État actuel</p>
-          <h2 class="section-title" id="status-title">Préproduction active</h2>
-          <p class="sweet-status-text">Les fondations du monde, la cartographie principale et la direction artistique sont établies. Le développement se concentre maintenant sur la consolidation de la bible et les premiers assets 3D.</p>
+
+          <h2
+            class="section-title"
+            id="status-title"
+          >
+            Préproduction active
+          </h2>
+
+          <p class="sweet-status-text">
+            Les fondations du monde, la cartographie principale
+            et la direction artistique sont établies.
+            Le développement se concentre maintenant sur
+            la consolidation de la bible et les premiers assets 3D.
+          </p>
         </div>
+
         <ul class="sweet-status-list">
-          <li><span>Établie</span> Direction artistique générale</li>
-          <li><span>Validée</span> Cartographie principale</li>
-          <li><span>En cours</span> Bible narrative et visuelle</li>
-          <li><span>Prochaine étape</span> Blockout 3D de WB-400</li>
-          <li><span>À venir</span> Préproduction BD ou webtoon</li>
+          <li>
+            <span>Établie</span>
+            Direction artistique générale
+          </li>
+
+          <li>
+            <span>Validée</span>
+            Cartographie principale
+          </li>
+
+          <li>
+            <span>En cours</span>
+            Bible narrative et visuelle
+          </li>
+
+          <li>
+            <span>Prochaine étape</span>
+            Blockout 3D de WB-400
+          </li>
+
+          <li>
+            <span>À venir</span>
+            Préproduction BD ou webtoon
+          </li>
         </ul>
       </div>
     </section>
 
-    <section class="sweet-journal section-alt" id="journal" aria-labelledby="journal-title">
+    <section
+      class="sweet-journal section-alt"
+      id="journal"
+      aria-labelledby="journal-title"
+    >
       <div class="container">
         <p class="section-kicker">Chronologie</p>
-        <h2 class="section-title" id="journal-title">Journal de production</h2>
 
-        {featuredPost ? (
-          <article class="sweet-featured-post">
-            {featuredPost.data.image && (
-              <a class="sweet-featured-post-media" href={`/projets/sweetlandia/${featuredPost.id}/`}>
-                <img src={featuredPost.data.image} alt={featuredPost.data.imageAlt ?? featuredPost.data.title} loading="lazy" decoding="async" />
-              </a>
-            )}
-            <div class="sweet-featured-post-content">
-              <p class="section-kicker">Dernière avancée • {featuredPost.data.phase}</p>
-              <h3>{featuredPost.data.title}</h3>
-              <p>{featuredPost.data.description}</p>
-              <p class="post-date"><time datetime={featuredPost.data.publishedAt.toISOString()}>{featuredPost.data.publishedAt.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</time></p>
-              <a class="btn-primary" href={`/projets/sweetlandia/${featuredPost.id}/`}>Lire l’article</a>
+        <h2
+          class="section-title"
+          id="journal-title"
+        >
+          Journal de production
+        </h2>
+
+        {
+          featuredPost ? (
+            <article class="sweet-featured-post">
+              {
+                featuredPost.data.image && (
+                  <a
+                    class="sweet-featured-post-media"
+                    href={`/projets/sweetlandia/${featuredPost.id}.html`}
+                  >
+                    <img
+                      src={featuredPost.data.image}
+                      alt={
+                        featuredPost.data.imageAlt ??
+                        featuredPost.data.title
+                      }
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </a>
+                )
+              }
+
+              <div class="sweet-featured-post-content">
+                <p class="section-kicker">
+                  Dernière avancée • {featuredPost.data.phase}
+                </p>
+
+                <h3>{featuredPost.data.title}</h3>
+
+                <p>{featuredPost.data.description}</p>
+
+                <p class="post-date">
+                  <time
+                    datetime={featuredPost.data.publishedAt.toISOString()}
+                  >
+                    {
+                      featuredPost.data.publishedAt.toLocaleDateString(
+                        "fr-FR",
+                        {
+                          day: "numeric",
+                          month: "long",
+                          year: "numeric"
+                        }
+                      )
+                    }
+                  </time>
+                </p>
+
+                <a
+                  class="btn-primary"
+                  href={`/projets/sweetlandia/${featuredPost.id}.html`}
+                >
+                  Lire l’article
+                </a>
+              </div>
+            </article>
+          ) : (
+            <p>
+              Le premier article du journal sera bientôt publié.
+            </p>
+          )
+        }
+
+        {
+          otherPosts.length > 0 && (
+            <div class="sweet-post-grid">
+              {
+                otherPosts.map((post) => (
+                  <article class="sweet-post-card">
+                    <p class="project-tag">
+                      {post.data.phase}
+                    </p>
+
+                    <h3>{post.data.title}</h3>
+
+                    <p>{post.data.description}</p>
+
+                    <time
+                      datetime={post.data.publishedAt.toISOString()}
+                    >
+                      {
+                        post.data.publishedAt.toLocaleDateString(
+                          "fr-FR"
+                        )
+                      }
+                    </time>
+
+                    <a
+                      class="btn-secondary"
+                      href={`/projets/sweetlandia/${post.id}.html`}
+                    >
+                      Lire la suite
+                    </a>
+                  </article>
+                ))
+              }
             </div>
-          </article>
-        ) : (
-          <p>Le premier article du journal sera bientôt publié.</p>
-        )}
-
-        {otherPosts.length > 0 && (
-          <div class="sweet-post-grid">
-            {otherPosts.map((post) => (
-              <article class="sweet-post-card">
-                <p class="project-tag">{post.data.phase}</p>
-                <h3>{post.data.title}</h3>
-                <p>{post.data.description}</p>
-                <time datetime={post.data.publishedAt.toISOString()}>{post.data.publishedAt.toLocaleDateString('fr-FR')}</time>
-                <a class="btn-secondary" href={`/projets/sweetlandia/${post.id}/`}>Lire la suite</a>
-              </article>
-            ))}
-          </div>
-        )}
+          )
+        }
       </div>
     </section>
 
-    <section class="sweet-gallery" id="galerie">
+    <section
+      class="sweet-gallery"
+      id="galerie"
+    >
       <div class="container">
-        <p class="section-kicker">Documents de référence</p>
-        <h2 class="section-title">Fondations visuelles publiques</h2>
+        <p class="section-kicker">
+          Documents de référence
+        </p>
+
+        <h2 class="section-title">
+          Fondations visuelles publiques
+        </h2>
+
         <div class="sweet-gallery-grid">
           <figure class="sweet-gallery-main">
-            <a href="/images/sweetlandia/WB-400.webp" target="_blank" rel="noopener"><img src="/images/sweetlandia/WB-400.webp" alt="Carte officielle de Sweetlandia montrant les royaumes autour du Four Central" loading="lazy" decoding="async" width="2048" height="1152" /></a>
-            <figcaption><strong>WB-400 — Carte officielle</strong><span>Structure générale du monde, territoires et repères majeurs.</span></figcaption>
+            <a
+              href="/images/sweetlandia/WB-400.webp"
+              target="_blank"
+              rel="noopener"
+            >
+              <img
+                src="/images/sweetlandia/WB-400.webp"
+                alt="Carte officielle de Sweetlandia montrant les royaumes autour du Four Central"
+                loading="lazy"
+                decoding="async"
+                width="2048"
+                height="1152"
+              />
+            </a>
+
+            <figcaption>
+              <strong>
+                WB-400 — Carte officielle
+              </strong>
+
+              <span>
+                Structure générale du monde, territoires
+                et repères majeurs.
+              </span>
+            </figcaption>
           </figure>
+
           <figure class="sweet-gallery-item">
-            <a href="/images/sweetlandia/WB-401.webp" target="_blank" rel="noopener"><img src="/images/sweetlandia/WB-401.webp" alt="Vue isométrique officielle de Sweetlandia" loading="lazy" decoding="async" /></a>
-            <figcaption><strong>WB-401 — Vue isométrique</strong><span>Organisation spatiale des royaumes autour du Four Central.</span></figcaption>
+            <a
+              href="/images/sweetlandia/WB-401.webp"
+              target="_blank"
+              rel="noopener"
+            >
+              <img
+                src="/images/sweetlandia/WB-401.webp"
+                alt="Vue isométrique officielle de Sweetlandia"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+
+            <figcaption>
+              <strong>
+                WB-401 — Vue isométrique
+              </strong>
+
+              <span>
+                Organisation spatiale des royaumes
+                autour du Four Central.
+              </span>
+            </figcaption>
           </figure>
+
           <figure class="sweet-gallery-item">
-            <a href="/images/sweetlandia/WB-402.webp" target="_blank" rel="noopener"><img src="/images/sweetlandia/WB-402.webp" alt="Coupe verticale officielle de Sweetlandia" loading="lazy" decoding="async" /></a>
-            <figcaption><strong>WB-402 — Coupe verticale</strong><span>Organisation verticale du monde et position du Sanctuaire du Miel.</span></figcaption>
+            <a
+              href="/images/sweetlandia/WB-402.webp"
+              target="_blank"
+              rel="noopener"
+            >
+              <img
+                src="/images/sweetlandia/WB-402.webp"
+                alt="Coupe verticale officielle de Sweetlandia"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+
+            <figcaption>
+              <strong>
+                WB-402 — Coupe verticale
+              </strong>
+
+              <span>
+                Organisation verticale du monde et position
+                du Sanctuaire du Miel.
+              </span>
+            </figcaption>
           </figure>
         </div>
       </div>
@@ -138,11 +394,27 @@ const jsonLd = {
     <section class="sweet-cta section-alt">
       <div class="container sweet-cta-card">
         <div>
-          <p class="featured-eyebrow">Suivre le projet</p>
-          <h2>Chaque nouvelle étape apparaîtra dans ce journal.</h2>
-          <p>Modélisation, écriture, tests visuels, corrections et décisions de production seront publiés progressivement.</p>
+          <p class="featured-eyebrow">
+            Suivre le projet
+          </p>
+
+          <h2>
+            Chaque nouvelle étape apparaîtra dans ce journal.
+          </h2>
+
+          <p>
+            Modélisation, écriture, tests visuels,
+            corrections et décisions de production
+            seront publiés progressivement.
+          </p>
         </div>
-        <a class="btn-primary" href="/#feedback">Donner votre avis</a>
+
+        <a
+          class="btn-primary"
+          href="/#feedback"
+        >
+          Donner votre avis
+        </a>
       </div>
     </section>
   </main>
