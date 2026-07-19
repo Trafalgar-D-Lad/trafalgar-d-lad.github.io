@@ -1,0 +1,39 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({ params: { id: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const canonical = `https://trafalgar-d-lad.github.io/blog/${post.id}/`;
+const image = post.data.image
+  ? new URL(post.data.image, 'https://trafalgar-d-lad.github.io').href
+  : 'https://trafalgar-d-lad.github.io/images/sweetlandia/WB-400.webp';
+---
+<BaseLayout
+  title={`${post.data.title} | Trafalgar D. Lad`}
+  description={post.data.description}
+  canonical={canonical}
+  image={image}
+  imageAlt={post.data.imageAlt ?? post.data.title}
+  type="article"
+>
+  <main id="main-content">
+    <article class="page-hero">
+      <div class="container page-hero-content">
+        <a class="project-back-link" href="/blog/">← Retour au blog</a>
+        <p class="section-kicker">{post.data.categories.join(' • ')}</p>
+        <h1>{post.data.title}</h1>
+        <p class="page-hero-subtitle">{post.data.description}</p>
+        <p><time datetime={post.data.publishedAt.toISOString()}>{post.data.publishedAt.toLocaleDateString('fr-FR')}</time></p>
+      </div>
+    </article>
+    <section class="section-alt">
+      <div class="container article-content"><Content /></div>
+    </section>
+  </main>
+</BaseLayout>

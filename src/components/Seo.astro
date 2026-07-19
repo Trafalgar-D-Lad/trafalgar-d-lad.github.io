@@ -1,0 +1,26 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  canonical: string;
+  image: string;
+  imageAlt: string;
+  type?: 'website' | 'article';
+  jsonLd?: Record<string, unknown>;
+}
+const { title, description, canonical, image, imageAlt, type = 'website', jsonLd } = Astro.props;
+---
+<meta name="description" content={description} />
+<meta name="author" content="Trafalgar D. Lad" />
+<meta name="theme-color" content="#0b0f14" />
+<link rel="canonical" href={canonical} />
+<meta property="og:type" content={type} />
+<meta property="og:locale" content="fr_FR" />
+<meta property="og:site_name" content="Trafalgar D. Lad — Studio 3D & IA" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={image} />
+<meta property="og:image:alt" content={imageAlt} />
+<meta name="twitter:card" content="summary_large_image" />
+{jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}

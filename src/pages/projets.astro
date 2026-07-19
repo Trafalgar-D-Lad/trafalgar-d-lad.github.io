@@ -1,0 +1,174 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Projets et réalisations | Trafalgar D. Lad"
+  description="Projets de Trafalgar D. Lad : motion design, IA générative, modélisation 3D, architecture, prototypage et impression 3D."
+  canonical="https://trafalgar-d-lad.github.io/projets.html"
+  image="https://trafalgar-d-lad.github.io/images/02_IA_PRINT/BC_3D_02.webp"
+  imageAlt="Projet de création assistée par IA, modélisation Blender et impression 3D"
+  current="projects"
+  bodyClass="projects-page-body"
+  gallery={true}
+>
+<main id="main-content">
+<section class="page-hero">
+<div class="container page-hero-content">
+<a class="project-back-link" href="index.html">← Retour à l’accueil</a>
+<p class="section-kicker">Portfolio</p>
+<h1>Projets et réalisations</h1>
+<p class="page-hero-subtitle">Une sélection de réalisations où le récit visuel, la 3D, l’IA générative et le prototypage se répondent.</p>
+</div>
+</section>
+<section class="projects-intro section-alt">
+<div class="container projects-intro-card">
+<p class="section-kicker">Approche</p>
+<h2 class="section-title">Du besoin au livrable</h2>
+<p>Chaque projet met en valeur une étape du processus : création de marque, direction artistique, modélisation, visualisation, prototypage ou préparation de production. Les galeries montrent le résultat ; les études de cas résument le rôle, les outils, les contraintes et les livrables.</p>
+</div>
+</section>
+<section class="projects" id="realisations">
+<div class="container">
+<h2 class="section-title">Vitrine</h2>
+<div class="project-grid">
+<article class="project-card proj01">
+<div aria-label="Logo et motion design" class="project-image" role="img"></div>
+<p class="project-tag">Identité digitale</p>
+<h3>Logo et motion design</h3>
+<p class="project-summary">Création d’identités animées lisibles, réutilisables et adaptées aux réseaux sociaux et aux supports vidéo.</p>
+<ul aria-label="Outils et livrables" class="project-meta">
+<li>Blender</li><li>Animation</li><li>Vidéo</li>
+</ul>
+<button class="btn-primary open-gallery" data-gallery="proj01">Voir la galerie</button>
+</article>
+<article class="project-card proj02">
+<div aria-label="IA, Blender et impression 3D" class="project-image" role="img"></div>
+<p class="project-tag">Concept vers objet</p>
+<h3>IA, Blender et impression 3D</h3>
+<p class="project-summary">Transformation d’un concept généré par IA (modélisation et optimisation 3D) en objet physique.</p>
+<ul aria-label="Outils et livrables" class="project-meta">
+<li>IA générative</li><li>Blender</li><li>PLA</li>
+</ul>
+<button class="btn-primary open-gallery" data-gallery="proj02">Voir la galerie</button>
+</article>
+<article class="project-card proj03">
+<div aria-label="Architecture intérieure et extérieure" class="project-image" role="img"></div>
+<p class="project-tag">Visualisation architecturale</p>
+<h3>Architecture intérieure et extérieure</h3>
+<p class="project-summary">Mise en scène d’espaces en conditions de jour et de nuit afin de valider volumes, matériaux et éclairage.</p>
+<ul aria-label="Outils et livrables" class="project-meta">
+<li>ArchViz</li><li>Éclairage</li><li>Rendu 3D</li>
+</ul>
+<button class="btn-primary open-gallery" data-gallery="proj03">Voir la galerie</button>
+</article>
+<article class="project-card proj04">
+<div aria-label="Prototype produit prêt pour production" class="project-image" role="img"></div>
+<p class="project-tag">Design et fabrication</p>
+<h3>Prototype produit prêt pour production</h3>
+<p class="project-summary">Conception et présentation de produits avec attention portée aux proportions, aux assemblages et à la fabrication.</p>
+<ul aria-label="Outils et livrables" class="project-meta">
+<li>Design produit</li><li>Blender</li><li>Prototype</li>
+</ul>
+<button class="btn-primary open-gallery" data-gallery="proj04">Voir la galerie</button>
+</article>
+</div>
+</div>
+</section>
+<section aria-labelledby="case-studies-title" class="case-studies section-alt">
+<div class="container">
+<p class="section-kicker">Études de cas</p>
+<h2 class="section-title" id="case-studies-title">Deux pipelines représentatifs</h2>
+<div class="case-study-grid">
+<article class="case-study-card">
+<p class="case-study-label">IA → Blender → impression 3D</p>
+<h3>Rendre un concept réellement fabricable</h3>
+<dl class="case-study-details">
+<div><dt>Rôle</dt><dd>Direction visuelle, reconstruction 3D et préparation à l’impression.</dd></div>
+<div><dt>Objectif</dt><dd>Passer d’une image de référence à un objet cohérent et imprimable.</dd></div>
+<div><dt>Outils</dt><dd>IA générative, Blender et logiciel de tranchage.</dd></div>
+<div><dt>Livrables</dt><dd>Concept validé, modèle corrigé et fichier prêt pour fabrication PLA.</dd></div>
+<div><dt>Contraintes</dt><dd>Épaisseurs, stabilité, supports, lisibilité des volumes et finition.</dd></div>
+</dl>
+<button class="btn-secondary open-gallery" data-gallery="proj02">Voir le processus visuel</button>
+</article>
+<article class="case-study-card">
+<p class="case-study-label">Prototype produit</p>
+<h3>Concevoir pour présenter et produire</h3>
+<dl class="case-study-details">
+<div><dt>Rôle</dt><dd>Conception 3D, mise en scène et optimisation du design.</dd></div>
+<div><dt>Objectif</dt><dd>Créer un produit lisible, attractif et techniquement crédible.</dd></div>
+<div><dt>Outils</dt><dd>Blender, rendu 3D et animation de présentation.</dd></div>
+<div><dt>Livrables</dt><dd>Modèle, visuels de présentation et démonstration animée.</dd></div>
+<div><dt>Contraintes</dt><dd>Proportions, cohérence des pièces, impact visuel et réutilisation.</dd></div>
+</dl>
+<button class="btn-secondary open-gallery" data-gallery="proj04">Voir les démonstrations</button>
+</article>
+</div>
+</div>
+</section>
+<section class="projects-cta">
+<div class="container compact-cta-card">
+<div>
+<p class="section-kicker">Votre projet</p>
+<h2>Besoin d’un asset, d’un prototype ou d’un univers visuel ?</h2>
+<p>Présentez-moi le résultat recherché et les contraintes de production.</p>
+</div>
+<a class="btn-primary" href="index.html#contact">Discuter du besoin</a>
+</div>
+</section>
+</main>
+<div aria-hidden="true" aria-labelledby="proj01-gallery-title" aria-modal="true" class="gallery-modal" id="proj01-gallery" role="dialog">
+<div class="gallery-content" tabindex="-1">
+<button aria-label="Fermer" class="gallery-close">×</button>
+<h3 id="proj01-gallery-title">Logo et motion design</h3>
+<div class="gallery-grid">
+<button aria-label="Lire la vidéo Madinina Vibes Events" class="gallery-thumb video-thumb" data-src="https://www.youtube.com/embed/z2ZWrQrEErI?autoplay=1&amp;rel=0" data-type="youtube"><img alt="Animation du logo Madinina Vibes Events" decoding="async" loading="lazy" src="/images/01_LOGO/MVE.webp"/><span class="gallery-thumb-label">Madinina Vibes Events</span></button>
+<button aria-label="Lire la vidéo IAMG Web Radio" class="gallery-thumb video-thumb" data-src="https://www.youtube.com/embed/qS_cO6YxDHs?autoplay=1&amp;rel=0" data-type="youtube"><img alt="Animation du logo IAMG Web Radio" decoding="async" loading="lazy" src="/images/01_LOGO/IAMG_poster.webp"/><span class="gallery-thumb-label">IAMG Web Radio</span></button>
+<button aria-label="Lire la vidéo MDP Gold" class="gallery-thumb video-thumb" data-src="https://www.youtube.com/embed/ag9iZdRghRM?autoplay=1&amp;rel=0" data-type="youtube"><img alt="Animation du logo MDP Gold" decoding="async" loading="lazy" src="/images/01_LOGO/MDP_GOLD_poster.webp"/><span class="gallery-thumb-label">MDP Gold</span></button>
+<button aria-label="Lire la vidéo MDP Blue" class="gallery-thumb video-thumb" data-src="https://www.youtube.com/embed/gVKG2l-m_jc?autoplay=1&amp;rel=0" data-type="youtube"><img alt="Animation du logo MDP Blue" decoding="async" loading="lazy" src="/images/01_LOGO/MDP_BLUE_poster.webp"/><span class="gallery-thumb-label">MDP Blue</span></button>
+</div>
+<div class="gallery-viewer"><img alt="" class="viewer-img"/><video class="viewer-video" controls=""></video><iframe allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="" class="viewer-iframe" title="Vidéo du projet"></iframe></div>
+</div>
+</div>
+<div aria-hidden="true" aria-labelledby="proj02-gallery-title" aria-modal="true" class="gallery-modal" id="proj02-gallery" role="dialog">
+<div class="gallery-content" tabindex="-1">
+<button aria-label="Fermer" class="gallery-close">×</button>
+<h3 id="proj02-gallery-title">IA → Blender → impression PLA</h3>
+<div class="gallery-grid">
+<button aria-label="Afficher le concept initial" class="gallery-thumb" data-src="/images/02_IA_PRINT/BC_01.webp" data-type="img"><img alt="Concept initial assisté par IA" decoding="async" loading="lazy" src="/images/02_IA_PRINT/BC_01.webp"/><span class="gallery-thumb-label">Concept initial</span></button>
+<button aria-label="Afficher la reconstruction 3D" class="gallery-thumb" data-src="/images/02_IA_PRINT/BC_3D_01.webp" data-type="img"><img alt="Première reconstruction du concept sous Blender" decoding="async" loading="lazy" src="/images/02_IA_PRINT/BC_3D_01.webp"/><span class="gallery-thumb-label">Modélisation 3D</span></button>
+<button aria-label="Afficher le modèle final" class="gallery-thumb" data-src="/images/02_IA_PRINT/BC_3D_02.webp" data-type="img"><img alt="Modèle 3D final préparé pour fabrication" decoding="async" loading="lazy" src="/images/02_IA_PRINT/BC_3D_02.webp"/><span class="gallery-thumb-label">Objet physique</span></button>
+</div>
+<div class="gallery-viewer"><img alt="" class="viewer-img"/><video class="viewer-video" controls=""></video></div>
+</div>
+</div>
+<div aria-hidden="true" aria-labelledby="proj03-gallery-title" aria-modal="true" class="gallery-modal" id="proj03-gallery" role="dialog">
+<div class="gallery-content" tabindex="-1">
+<button aria-label="Fermer" class="gallery-close">×</button>
+<h3 id="proj03-gallery-title">Visualisation architecturale</h3>
+<div class="gallery-grid">
+<button class="gallery-thumb" data-src="/images/03_INTERIOR/jour/Jour_01.webp" data-type="img"><img alt="Vue intérieure de jour 1" decoding="async" loading="lazy" src="/images/03_INTERIOR/jour/Jour_01.webp"/></button>
+<button class="gallery-thumb" data-src="/images/03_INTERIOR/nuit/nuit_01.webp" data-type="img"><img alt="Vue intérieure de nuit 1" decoding="async" loading="lazy" src="/images/03_INTERIOR/nuit/nuit_01.webp"/></button>
+<button class="gallery-thumb" data-src="/images/03_INTERIOR/jour/Jour_02.webp" data-type="img"><img alt="Vue intérieure de jour 2" decoding="async" loading="lazy" src="/images/03_INTERIOR/jour/Jour_02.webp"/></button>
+<button class="gallery-thumb" data-src="/images/03_INTERIOR/nuit/nuit_02.webp" data-type="img"><img alt="Vue intérieure de nuit 2" decoding="async" loading="lazy" src="/images/03_INTERIOR/nuit/nuit_02.webp"/></button>
+<button class="gallery-thumb" data-src="/images/03_INTERIOR/jour/Jour_03.webp" data-type="img"><img alt="Vue intérieure de jour 3" decoding="async" loading="lazy" src="/images/03_INTERIOR/jour/Jour_03.webp"/></button>
+<button class="gallery-thumb" data-src="/images/03_INTERIOR/nuit/nuit_03.webp" data-type="img"><img alt="Vue intérieure de nuit 3" decoding="async" loading="lazy" src="/images/03_INTERIOR/nuit/nuit_03.webp"/></button>
+<button class="gallery-thumb" data-src="/images/03_INTERIOR/jour/Jour_04.webp" data-type="img"><img alt="Vue intérieure de jour 4" decoding="async" loading="lazy" src="/images/03_INTERIOR/jour/Jour_04.webp"/></button>
+<button class="gallery-thumb" data-src="/images/03_INTERIOR/nuit/nuit_04.webp" data-type="img"><img alt="Vue intérieure de nuit 4" decoding="async" loading="lazy" src="/images/03_INTERIOR/nuit/nuit_04.webp"/></button>
+<button aria-label="Lire la vidéo ArchViz" class="gallery-thumb video-thumb" data-src="https://www.youtube.com/embed/2HnQwHyhj9A?autoplay=1&amp;rel=0" data-type="youtube"><img alt="Vidéo de visualisation architecturale" decoding="async" loading="lazy" src="/images/03_INTERIOR/ArchViz.webp"/><span class="gallery-thumb-label">Animation ArchViz</span></button>
+</div>
+<div class="gallery-viewer"><img alt="" class="viewer-img"/><video class="viewer-video" controls=""></video><iframe allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="" class="viewer-iframe" title="Vidéo du projet"></iframe></div>
+</div>
+</div>
+<div aria-hidden="true" aria-labelledby="proj04-gallery-title" aria-modal="true" class="gallery-modal" id="proj04-gallery" role="dialog">
+<div class="gallery-content" tabindex="-1">
+<button aria-label="Fermer" class="gallery-close">×</button>
+<h3 id="proj04-gallery-title">Prototype produit prêt pour production</h3>
+<div class="gallery-grid">
+<button aria-label="Lire la vidéo Shonen Pack" class="gallery-thumb video-thumb" data-src="https://www.youtube.com/embed/TviyLzZ3dlU?autoplay=1&amp;rel=0" data-type="youtube"><img alt="Présentation du prototype Shonen Pack" decoding="async" loading="lazy" src="/images/04_PRODUCT/Product_poster.webp"/><span class="gallery-thumb-label">Shonen Pack</span></button>
+<button aria-label="Lire la vidéo Red Bull" class="gallery-thumb video-thumb" data-src="https://www.youtube.com/embed/v06SdcgqHZI?autoplay=1&amp;rel=0" data-type="youtube"><img alt="Présentation du prototype Red Bull" decoding="async" loading="lazy" src="/images/04_PRODUCT/RedBull.webp"/><span class="gallery-thumb-label">Red Bull</span></button>
+</div>
+<div class="gallery-viewer"><img alt="" class="viewer-img"/><video class="viewer-video" controls=""></video><iframe allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="" class="viewer-iframe" title="Vidéo du projet"></iframe></div>
+</div>
+</div>
+</BaseLayout>

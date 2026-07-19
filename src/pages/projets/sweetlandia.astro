@@ -1,0 +1,147 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  name: "Sweetlandia",
+  creator: { "@type": "Person", name: "Trafalgar D. Lad" },
+  url: "https://trafalgar-d-lad.github.io/projets/sweetlandia.html",
+  image: "https://trafalgar-d-lad.github.io/images/sweetlandia/WB-400.webp",
+  description: "Univers fantasy gourmand en préproduction pour la bande dessinée ou le webtoon, la création 3D et les produits physiques.",
+  inLanguage: "fr"
+};
+---
+<BaseLayout
+  title="Sweetlandia | Trafalgar D. Lad"
+  description="Découvrez Sweetlandia, un univers fantasy gourmand original créé par Trafalgar D. Lad : worldbuilding, direction artistique, concept art, 3D et préproduction BD ou webtoon."
+  canonical="https://trafalgar-d-lad.github.io/projets/sweetlandia.html"
+  image="https://trafalgar-d-lad.github.io/images/sweetlandia/WB-400.webp"
+  imageAlt="Carte officielle de l’univers Sweetlandia"
+  type="article"
+  current="sweetlandia"
+  bodyClass="sweetlandia-page"
+  jsonLd={jsonLd}
+>
+<main id="main-content">
+<section aria-labelledby="sweet-title" class="sweet-hero">
+<div class="container sweet-hero-content">
+<a class="project-back-link" href="/#sweetlandia">← Retour au portfolio</a>
+<p class="featured-eyebrow">Univers original • Préproduction active</p>
+<h1 id="sweet-title">Sweetlandia</h1>
+<p class="sweet-hero-lead">Un monde fantasy gourmand construit comme une propriété créative complète, de la bible d’univers à la bande dessinée, en passant par la création 3D et la fabrication de produits physiques.</p>
+<div class="sweet-hero-actions">
+<a class="btn-primary" href="#univers">Explorer l’univers</a>
+<a class="btn-secondary btn-large" href="#galerie">Voir les visuels</a>
+</div>
+</div>
+</section>
+<section class="sweet-intro section-alt" id="univers">
+<div class="container sweet-two-columns">
+<div>
+<p class="section-kicker">Le projet</p>
+<h2 class="section-title">Un univers pensé pour évoluer</h2>
+</div>
+<div class="sweet-intro-copy">
+<p>Sweetlandia est organisé autour du Four Central, au cœur d’un monde évoquant une fleur de pain d’épices. Chaque royaume possède sa propre culture, son architecture, ses ressources, ses tensions et son identité visuelle.</p>
+<p>Le projet est développé pour devenir une bande dessinée ou un webtoon, tout en restant compatible avec la production d’environnements 3D, de figurines imprimables, d’un artbook et de produits dérivés.</p>
+</div>
+</div>
+</section>
+<section aria-labelledby="story-title" class="sweet-story-hook">
+<div class="container story-hook-card">
+<div>
+<p class="section-kicker">Le point de départ</p>
+<h2 class="section-title" id="story-title">La quête de Boby Cake</h2>
+</div>
+<div class="story-hook-copy">
+<p>Boby Cake se lance à la recherche de Sir Frost. Pour l’atteindre, il doit traverser plusieurs territoires devenus hostiles, comprendre leurs tensions et découvrir les forces qui menacent l’équilibre de Sweetlandia.</p>
+<p>Cette quête sert de porte d’entrée au lecteur : chaque royaume révèle une facette du monde, de son histoire et des choix qui façonneront le destin de Boby.</p>
+</div>
+</div>
+</section>
+<section class="sweet-pillars section-alt">
+<div class="container">
+<h2 class="section-title">Les piliers du projet</h2>
+<div class="sweet-card-grid">
+<article class="sweet-info-card"><span class="sweet-card-number">01</span><h3>Worldbuilding structuré</h3><p>Une géographie, des cultures, des artefacts et une chronologie documentés dans une bible de production.</p></article>
+<article class="sweet-info-card"><span class="sweet-card-number">02</span><h3>Direction artistique cohérente</h3><p>Une identité familiale, épique, chaleureuse et colorée, conçue pour fonctionner en illustration, BD, 3D et fabrication.</p></article>
+<article class="sweet-info-card"><span class="sweet-card-number">03</span><h3>Pipeline hybride</h3><p>Écriture, recherche visuelle, IA générative, reconstruction sous Blender, optimisation et préparation pour la production.</p></article>
+</div>
+</div>
+</section>
+<section aria-labelledby="world-title" class="sweet-world">
+<div class="container">
+<p class="section-kicker">Le monde</p>
+<h2 class="section-title" id="world-title">Les territoires de Sweetlandia</h2>
+<div class="kingdom-grid">
+<article class="kingdom-card"><h3>Ginger World</h3><p>Terre biscuitée des fours et des traditions fondatrices. Boby y apprend que le courage ne consiste pas à ignorer la peur, mais à avancer malgré elle.</p></article>
+<article class="kingdom-card"><h3>Royaume Caramel</h3><p>Territoire d’alchimie et de matières instables. Ses habitants protègent un savoir capable de stabiliser les transformations qui touchent le monde.</p></article>
+<article class="kingdom-card"><h3>Royaume CandyBot</h3><p>Royaume technologique où confiserie et mécanique s’assemblent. L’innovation y crée autant de solutions que de nouveaux dangers.</p></article>
+<article class="kingdom-card"><h3>Royaume Chocolat</h3><p>Région dense, puissante et stratégique. Ses ressources et ses reliefs en font un territoire convoité, difficile à traverser sans alliance.</p></article>
+<article class="kingdom-card"><h3>Royaume de Glace</h3><p>Territoire froid et majestueux où mène la recherche de Sir Frost. Le climat et les forces qui s’y éveillent transforment la quête en véritable épreuve.</p></article>
+<article class="kingdom-card kingdom-card-featured"><h3>Sanctuaire du Miel</h3><p>Lieu sacré suspendu au-dessus du monde. Il conserve une mémoire ancienne et pourrait détenir la clé de l’équilibre entre les royaumes.</p></article>
+</div>
+</div>
+</section>
+<section class="sweet-process section-alt" id="demarche">
+<div class="container">
+<p class="section-kicker">La démarche</p>
+<h2 class="section-title">De l’idée à un univers exploitable</h2>
+<div class="sweet-process-list">
+<article><span>01</span><div><h3>Écriture et fondations</h3><p>Définition du concept, des thèmes, des personnages, des territoires et des règles de l’univers.</p></div></article>
+<article><span>02</span><div><h3>Bible visuelle et narrative</h3><p>Organisation des informations canoniques, des références, des cartes et des besoins de production.</p></div></article>
+<article><span>03</span><div><h3>Concept art assisté par IA</h3><p>Exploration rapide de formes, ambiances, architectures et variations, avec sélection et correction humaine.</p></div></article>
+<article><span>04</span><div><h3>Construction sous Blender</h3><p>Recréation, modélisation et mise en scène des éléments destinés aux environnements, personnages et objets.</p></div></article>
+<article><span>05</span><div><h3>Déclinaison et production</h3><p>Préparation pour la BD ou le webtoon, l’animation, l’impression 3D, l’artbook et les futurs supports.</p></div></article>
+</div>
+</div>
+</section>
+<section class="sweet-gallery" id="galerie">
+<div class="container">
+<p class="section-kicker">Sélection visuelle</p>
+<h2 class="section-title">Premiers documents de production</h2>
+<p class="sweet-gallery-intro">Cette sélection présente les fondations visuelles publiques du projet. La bible complète reste un document de production interne.</p>
+<div class="sweet-gallery-grid">
+<figure class="sweet-gallery-main">
+<a href="/images/sweetlandia/WB-400.webp" rel="noopener" target="_blank"><img alt="Carte officielle de Sweetlandia montrant les royaumes autour du Four Central" decoding="async" height="1152" loading="lazy" src="/images/sweetlandia/WB-400.webp" width="2048"/></a>
+<figcaption><strong>WB-400 — Carte officielle</strong><span>Structure générale du monde, territoires et repères majeurs.</span></figcaption>
+</figure>
+<figure class="sweet-gallery-item">
+<a href="/images/sweetlandia/WB-401.webp" rel="noopener" target="_blank"><img alt="Vue isométrique officielle de Sweetlandia" decoding="async" loading="lazy" src="/images/sweetlandia/WB-401.webp"/></a>
+<figcaption><strong>WB-401 — Vue isométrique</strong><span>Organisation spatiale des royaumes autour du Four Central.</span></figcaption>
+</figure>
+<figure class="sweet-gallery-item">
+<a href="/images/sweetlandia/WB-402.webp" rel="noopener" target="_blank"><img alt="Coupe verticale officielle de Sweetlandia" decoding="async" loading="lazy" src="/images/sweetlandia/WB-402.webp"/></a>
+<figcaption><strong>WB-402 — Coupe verticale</strong><span>Organisation verticale du monde et position du Sanctuaire du Miel.</span></figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section class="sweet-status section-alt">
+<div class="container sweet-status-layout">
+<div>
+<p class="section-kicker">État du projet</p>
+<h2 class="section-title">Préproduction active</h2>
+<p class="sweet-status-text">Les fondations du monde, la cartographie principale et la direction artistique sont établies. Le développement se concentre maintenant sur la consolidation de la bible, les personnages, les environnements et la préparation du premier format narratif.</p>
+</div>
+<ul class="sweet-status-list">
+<li><span>Établie</span> Direction artistique générale</li>
+<li><span>Validée</span> Cartographie principale</li>
+<li><span>En cours</span> Bible narrative et visuelle</li>
+<li><span>Prochaine étape</span> Préproduction BD ou webtoon</li>
+<li><span>Progressif</span> Développement des assets 3D</li>
+</ul>
+</div>
+</section>
+<section class="sweet-cta">
+<div class="container sweet-cta-card">
+<div>
+<p class="featured-eyebrow">Collaboration créative</p>
+<h2>Construisons des univers qui peuvent réellement prendre vie.</h2>
+<p>Sweetlandia illustre ma capacité à relier direction artistique, narration, IA générative, 3D et fabrication.</p>
+</div>
+<a class="btn-primary" href="/#contact">Me contacter</a>
+</div>
+</section>
+</main>
+</BaseLayout>
