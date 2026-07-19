@@ -1,4 +1,4 @@
-// js/gallery.js
+// public/js/gallery.js
 (() => {
   const openButtons = document.querySelectorAll(".open-gallery");
   const modals = document.querySelectorAll(".gallery-modal");
@@ -11,6 +11,7 @@
     const viewerVideo = qs(modal, ".viewer-video");
     const viewerIframe = qs(modal, ".viewer-iframe");
     const viewerImg = qs(modal, ".viewer-img");
+    const viewer = qs(modal, ".gallery-viewer");
 
     if (viewerVideo) {
       viewerVideo.pause();
@@ -29,6 +30,8 @@
       viewerImg.removeAttribute("alt");
       viewerImg.style.display = "none";
     }
+
+    viewer?.classList.remove("is-portrait");
 
     qsa(modal, ".gallery-thumb.active").forEach((thumb) => {
       thumb.classList.remove("active");
@@ -62,8 +65,12 @@
     qsa(modal, ".gallery-thumb").forEach((thumb) => {
       const isActive = thumb === activeThumb;
       thumb.classList.toggle("active", isActive);
-      if (isActive) thumb.setAttribute("aria-current", "true");
-      else thumb.removeAttribute("aria-current");
+
+      if (isActive) {
+        thumb.setAttribute("aria-current", "true");
+      } else {
+        thumb.removeAttribute("aria-current");
+      }
     });
   }
 
@@ -74,7 +81,11 @@
     const viewerImg = qs(modal, ".viewer-img");
     const viewerVideo = qs(modal, ".viewer-video");
     const viewerIframe = qs(modal, ".viewer-iframe");
+    const viewer = qs(modal, ".gallery-viewer");
     const thumbImg = qs(thumb, "img");
+    const isPortrait = thumb.dataset.format === "portrait";
+
+    viewer?.classList.toggle("is-portrait", isPortrait);
 
     if (type === "img" && viewerImg) {
       viewerImg.src = src;
@@ -92,7 +103,8 @@
     }
 
     if (type === "youtube" && viewerIframe) {
-      viewerIframe.title = thumb.getAttribute("aria-label") || "Vidéo du projet";
+      viewerIframe.title =
+        thumb.getAttribute("aria-label") || "Vidéo du projet";
       viewerIframe.src = src;
       viewerIframe.style.display = "block";
     }
@@ -100,15 +112,25 @@
 
   openButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      const modal = document.getElementById(`${button.dataset.gallery}-gallery`);
-      if (modal) openModal(modal, button);
+      const modal = document.getElementById(
+        `${button.dataset.gallery}-gallery`
+      );
+
+      if (modal) {
+        openModal(modal, button);
+      }
     });
   });
 
   modals.forEach((modal) => {
-    qs(modal, ".gallery-close")?.addEventListener("click", () => closeModal(modal));
+    qs(modal, ".gallery-close")?.addEventListener("click", () => {
+      closeModal(modal);
+    });
+
     modal.addEventListener("click", (event) => {
-      if (event.target === modal) closeModal(modal);
+      if (event.target === modal) {
+        closeModal(modal);
+      }
     });
   });
 
@@ -118,7 +140,10 @@
 
     const modal = thumb.closest(".gallery-modal");
     const { type, src } = thumb.dataset;
-    if (modal && type && src) showMedia(modal, type, src, thumb);
+
+    if (modal && type && src) {
+      showMedia(modal, type, src, thumb);
+    }
   });
 
   document.addEventListener("keydown", (event) => {
@@ -130,20 +155,24 @@
       return;
     }
 
-    if (event.key === "Tab") {
-      const focusable = qsa(opened, 'button, [href], iframe, video[controls], [tabindex]:not([tabindex="-1"])')
-        .filter((element) => !element.hasAttribute("disabled"));
-      if (!focusable.length) return;
+    if (event.key !== "Tab") return;
 
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-      if (event.shiftKey && document.activeElement === first) {
-        event.preventDefault();
-        last.focus();
-      } else if (!event.shiftKey && document.activeElement === last) {
-        event.preventDefault();
-        first.focus();
-      }
+    const focusable = qsa(
+      opened,
+      'button, [href], iframe, video[controls], [tabindex]:not([tabindex="-1"])'
+    ).filter((element) => !element.hasAttribute("disabled"));
+
+    if (!focusable.length) return;
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
     }
   });
 })();
